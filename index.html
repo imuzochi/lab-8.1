@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f5f7fb">
+	<title>Recall — Flashcards</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="app.js" defer></script>
+</head>
+<body>
+	<header class="app-header">
+		<a class="brand" href="#" aria-label="Recall home">
+			<span class="brand-mark" aria-hidden="true">R</span>
+			<span>Recall</span>
+		</a>
+		<div class="header-actions">
+			<button class="btn" id="exportBtn" type="button">Export</button>
+			<button class="btn" id="importBtn" type="button">Import</button>
+			<button class="btn btn-primary" id="newDeckBtn" type="button">＋ New deck</button>
+			<input class="sr-only" id="importFile" type="file" accept="application/json,.json" tabindex="-1"
+				aria-label="Choose a Recall deck JSON file">
+		</div>
+	</header>
+
+	<div class="layout">
+		<aside class="sidebar" aria-label="Your decks">
+			<div class="sidebar-heading">
+				<h2>Your decks</h2>
+				<button class="icon-button" id="sidebarNewDeck" type="button"
+					aria-label="Create a new deck" title="New deck">＋</button>
+			</div>
+			<ul class="deck-list" id="deckList"></ul>
+		</aside>
+
+		<main class="main-panel" id="mainContent" tabindex="-1">
+			<div class="deck-top">
+				<div>
+					<h1 class="deck-title" id="deckTitle">Your flashcards</h1>
+					<p class="subheading" id="deckDescription">Choose a deck or create one to get started.</p>
+				</div>
+				<div class="deck-actions" id="deckActions" hidden>
+					<button class="icon-button" id="renameDeckBtn" type="button"
+						aria-label="Rename this deck" title="Rename deck">✎</button>
+					<button class="icon-button" id="deleteDeckBtn" type="button"
+						aria-label="Delete this deck" title="Delete deck">⌫</button>
+				</div>
+			</div>
+
+			<div id="workspace" hidden>
+				<div class="toolbar">
+					<label class="search-wrap">
+						<span aria-hidden="true">⌕</span>
+						<span class="sr-only">Search cards</span>
+						<input id="searchInput" type="search" placeholder="Search this deck…" autocomplete="off">
+					</label>
+					<button class="btn" id="shuffleBtn" type="button">⇄ Shuffle</button>
+					<button class="btn btn-primary" id="newCardBtn" type="button">＋ New card</button>
+				</div>
+
+				<section aria-label="Study cards">
+					<div id="studyArea"></div>
+				</section>
+				<section aria-labelledby="cardListHeading">
+					<div class="results-heading">
+						<h2 id="cardListHeading">Cards in this deck</h2>
+						<p id="resultCount"></p>
+					</div>
+					<div class="card-list" id="cardList"></div>
+				</section>
+			</div>
+		</main>
+	</div>
+
+	<footer class="app-footer">
+		Tip: use <strong>Space</strong> to flip and <strong>← / →</strong> to move between cards.
+		Your decks save automatically on this device.
+	</footer>
+	<div id="modalRoot"></div>
+	<div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
